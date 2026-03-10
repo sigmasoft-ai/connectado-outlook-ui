@@ -65,6 +65,20 @@ const MappingForm: React.FC<MappingFormProps> = ({ rules, onRulesChange, rulesLo
         setLoading(true);
         showAlert("Validating with server…", "info");
 
+        // Check for duplicate Subject + Project
+        const isDuplicate = rules.some(
+            (r) =>
+                r.id !== editingId &&
+                r.meeting_subject.toLowerCase() === subject.trim().toLowerCase() &&
+                r.project_name.toLowerCase() === project.trim().toLowerCase()
+        );
+
+        if (isDuplicate) {
+            showAlert("A rule with this Meeting Subject and Project already exists.");
+            setLoading(false);
+            return;
+        }
+
         try {
             const result = await validateMapping(project.trim(), task.trim());
             if (!result.valid) {

@@ -5,6 +5,7 @@ import ActivateMeetingForm from "./ActivateMeetingForm";
 import FindRecordingsForm from "./FindRecordingsForm";
 import { MappingRule, loadMappingFromOneDrive } from "../services/graph";
 import "./App.css";
+import logo from "../../assets/logo.png";
 
 type Tab = "submit" | "mapping" | "findRecordings";
 
@@ -69,8 +70,7 @@ const App: React.FC = () => {
       <div className="app-root auth-gate">
         <div className="auth-container">
           <div className="auth-logo">
-            <div className="logo-dot-lg" />
-            <h1 className="auth-title">Conectado</h1>
+            <img src={logo} alt="Conectado" />
           </div>
           <p className="auth-subtitle">Sign in to manage your meeting mappings and activate recordings.</p>
           <button className="btn btn-primary btn-lg" onClick={handleSignIn} disabled={loading}>
@@ -85,12 +85,11 @@ const App: React.FC = () => {
   return (
     <div className="app-root">
       {/* ── Header ── */}
-      <header className="app-header">
+      {/* <header className="app-header">
         <div className="header-left">
-          <div className="logo-dot" />
-          <span className="header-title">Conectado</span>
+          <img src={logo} alt="Conectado" />
         </div>
-      </header>
+      </header> */}
 
       {/* ── Tab Bar ── */}
       <nav className="tab-bar">
