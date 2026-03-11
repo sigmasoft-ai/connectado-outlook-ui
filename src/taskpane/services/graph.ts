@@ -57,6 +57,13 @@ export async function initMsal(): Promise<void> {
     }
 }
 
+/**
+ * Resets the MSAL application instance. Useful when configuration changes.
+ */
+export function resetMsal(): void {
+    msalApp = null;
+}
+
 // ─── Token Acquisition ───────────────────────────────────────────────────────
 /**
  * Acquire a Graph token.

@@ -1,10 +1,80 @@
 // ─── Central configuration ───────────────────────────────────────────────────
-// Update CONECTADO_BASE_URL to the URL where your FastAPI backend is running.
-// Update MSAL_CLIENT_ID from your Azure App Registration.
+// Update configuration settings via the First-Time Configuration Form.
+// These are persisted using Office.context.roamingSettings.
 
-export const CONFIG = {
-    CONECTADO_BASE_URL: "http://localhost:8000",
-    MSAL_CLIENT_ID: "3f3d5015-ea26-4d93-8dfd-0fbf5e9109d3", // Azure AD App Registration → Application (client) ID
-    MSAL_TENANT_ID: "9ec212c2-2f63-4e82-a59a-5e479388ba2a", // 'common' for multi-tenant; replace with your tenant ID if needed
+export let CONFIG = {
+    CONECTADO_BASE_URL: "",
+    MSAL_CLIENT_ID: "",
+    MSAL_TENANT_ID: "",
     ONEDRIVE_FILE_PATH: "projects_mapping.json",
 };
+
+/**
+ * Loads the configuration from Office roaming settings.
+ */
+export function loadConfig(): void {
+    if (typeof Office !== "undefined" && Office.context && Office.context.roamingSettings) {
+        const workspaceConfig = Office.context.roamingSettings.get("workspaceConfig");
+        if (workspaceConfig) {
+            CONFIG = { ...CONFIG, ...workspaceConfig };
+        }
+    }
+}
+
+/**
+ * Saves the configuration to Office roaming settings and updates the in-memory CONFIG.
+ * @param newConfig The new configuration values.
+ */
+export function saveConfig(newConfig: Partial<typeof CONFIG>): Promise<void> {
+    CONFIG = { ...CONFIG, ...newConfig };
+
+    return new Promise((resolve, reject) => {
+        if (typeof Office !== "undefined" && Office.context && Office.context.roamingSettings) {
+            Office.context.roamingSettings.set("workspaceConfig", CONFIG);
+            Office.context.roamingSettings.saveAsync((result) => {
+                if (result.status === Office.AsyncResultStatus.Succeeded) {
+                    resolve();
+                } else {
+                    reject(new Error(result.error.message));
+                }
+            });
+        } else {
+            resolve();
+        }
+    });
+}
+
+/**
+ * Checks if the configuration is complete.
+ */
+export function isConfigured(): boolean {
+    return !!(
+        CONFIG.CONECTADO_BASE_URL &&
+        CONFIG.MSAL_CLIENT_ID &&
+        CONFIG.MSAL_TENANT_ID
+    );
+}
+
+/**
+ * Clears the configuration from roaming settings.
+ */
+export function clearConfig(): Promise<void> {
+    CONFIG.CONECTADO_BASE_URL = "";
+    CONFIG.MSAL_CLIENT_ID = "";
+    CONFIG.MSAL_TENANT_ID = "";
+
+    return new Promise((resolve, reject) => {
+        if (typeof Office !== "undefined" && Office.context && Office.context.roamingSettings) {
+            Office.context.roamingSettings.remove("workspaceConfig");
+            Office.context.roamingSettings.saveAsync((result) => {
+                if (result.status === Office.AsyncResultStatus.Succeeded) {
+                    resolve();
+                } else {
+                    reject(new Error(result.error.message));
+                }
+            });
+        } else {
+            resolve();
+        }
+    });
+}

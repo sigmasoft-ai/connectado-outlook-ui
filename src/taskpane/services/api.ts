@@ -63,8 +63,8 @@ export interface FindRecordingResponse {
 }
 
 export async function getRecordings(subject: string, date: string): Promise<RecordingItem[]> {
-    const params = new URLSearchParams({ subject, date });
-    const resp = await fetch(`${CONFIG.CONECTADO_BASE_URL}/api/v1/recordings?${params.toString()}`, {
+    const url = `${CONFIG.CONECTADO_BASE_URL}/api/v1/recordings?subject=${encodeURIComponent(subject)}&date=${encodeURIComponent(date)}`;
+    const resp = await fetch(url, {
         method: "GET",
     });
     const data = await resp.json();
