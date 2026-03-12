@@ -65,7 +65,7 @@ const ConfigurationForm: React.FC<ConfigurationFormProps> = ({ onConfigSaved }) 
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="clientId">Azure Client ID</label>
+                        <label htmlFor="clientId">Client ID</label>
                         <input
                             id="clientId"
                             type="text"
@@ -78,7 +78,7 @@ const ConfigurationForm: React.FC<ConfigurationFormProps> = ({ onConfigSaved }) 
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="tenantId">Azure Tenant ID</label>
+                        <label htmlFor="tenantId">Tenant ID</label>
                         <input
                             id="tenantId"
                             type="text"

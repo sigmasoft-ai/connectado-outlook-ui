@@ -103,25 +103,41 @@ const App: React.FC = () => {
 
   if (authStatus === "unauthenticated") {
     return (
-      <div className="app-root auth-gate">
-        <div className="auth-container">
-          <div className="auth-logo">
-            <img src={logo} alt="Conectado" />
-          </div>
-          <p className="auth-subtitle">Sign in to manage your meeting mappings and activate recordings.</p>
-          <button className="btn btn-primary btn-lg" onClick={handleSignIn} disabled={loading}>
-            {loading ? <><span className="btn-spinner" /> Signing in…</> : "Sign In with Microsoft"}
-          </button>
-          {error && <div className="alert alert-error" style={{ marginTop: "20px" }}>{error}</div>}
-          <button
-            className="btn btn-ghost"
-            style={{ marginTop: "20px", border: "none", fontSize: "12px" }}
-            onClick={() => setIsAppConfigured(false)}
+      <>
+        <div style={{ padding: "12px 1px", display: "flex", justifyContent: "right" }}>
+          <div className="header-right">
+             <button
+            className="btn-icon-sm"
+            title="Configuration Settings"
+            onClick={() => setShowDeleteModal(true)}
           >
-            Edit Configuration
+            🗑️
           </button>
+          </div>
+         
         </div>
-      </div>
+        <div className="app-root auth-gate">
+          <div className="auth-container">
+            <div className="auth-logo">
+              <img style={{ width: "150px" }} src={logo} alt="Conectado" />
+            </div>
+
+            <p className="auth-subtitle">Sign in to manage your meeting mappings and activate recordings.</p>
+            <button className="btn btn-primary btn-lg" onClick={handleSignIn} disabled={loading}>
+              {loading ? <><span className="btn-spinner" /> Signing in…</> : "Sign In with Microsoft"}
+            </button>
+            {error && <div className="alert alert-error" style={{ marginTop: "20px" }}>{error}</div>}
+            <button
+              className="btn btn-ghost"
+              style={{ marginTop: "20px", border: "none", fontSize: "12px" }}
+              onClick={() => setIsAppConfigured(false)}
+            >
+              Edit Configuration
+            </button>
+          </div>
+        </div>
+      </>
+
     );
   }
 
@@ -138,7 +154,7 @@ const App: React.FC = () => {
             title="Configuration Settings"
             onClick={() => setShowDeleteModal(true)}
           >
-            ⚙️
+            🗑️
           </button>
         </div>
       </header>
