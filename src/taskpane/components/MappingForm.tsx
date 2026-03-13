@@ -125,13 +125,19 @@ const MappingForm: React.FC<MappingFormProps> = ({ rules, onRulesChange, rulesLo
         }
     }, [subject, project, task, editingId, rules, onRulesChange]);
 
-    const handleDelete = async (id: string) => {
+    const [showDeleteConfirm, setShowDeleteConfirm] = useState<string | null>(null);
+
+    const handleDelete = async () => {
+        if (!showDeleteConfirm) return;
+        const id = showDeleteConfirm;
         const updated = rules.filter((r) => r.id !== id);
+        setShowDeleteConfirm(null);
         try {
             await saveMappingToOneDrive(updated);
         } catch (e: unknown) {
             const msg = e instanceof Error ? e.message : String(e);
             console.warn("Delete: OneDrive write failed", msg);
+            showAlert(`Delete: OneDrive write failed: ${msg}`, "warning");
         }
         onRulesChange(updated);
     };
@@ -184,14 +190,32 @@ const MappingForm: React.FC<MappingFormProps> = ({ rules, onRulesChange, rulesLo
                                         <th>Meeting Subject</th>
                                         <th>Project</th>
                                         <th>Task ID</th>
+                                        <th style={{ textAlign: "right" }}>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {paginatedRules.map((r) => (
                                         <tr key={r.id}>
-                                            <td className="td-subject">{escHtml(r.meeting_subject)}</td>
+                                            <td className="td-subject" title={r.meeting_subject}>{escHtml(r.meeting_subject)}</td>
                                             <td>{escHtml(r.project_name)}</td>
                                             <td className="td-task">{escHtml(r.sample_task)}</td>
+                                            <td style={{ textAlign: "right" }}>
+                                                <button
+                                                    className="icon-btn"
+                                                    title="Edit"
+                                                    onClick={() => openEdit(r)}
+                                                >
+                                                    ✏️
+                                                </button>
+                                                <button
+                                                    className="icon-btn delete"
+                                                    title="Delete"
+                                                    onClick={() => setShowDeleteConfirm(r.id)}
+                                                    style={{ marginLeft: '8px' }}
+                                                >
+                                                    🗑️
+                                                </button>
+                                            </td>
                                         </tr>
                                     ))}
                                 </tbody>
@@ -231,54 +255,78 @@ const MappingForm: React.FC<MappingFormProps> = ({ rules, onRulesChange, rulesLo
                 )}
             </div>
 
-            {/* Add / Edit Form */}
+            {/* Add / Edit Form Modal */}
             {showForm && (
-                <div className="rule-form">
-                    <div className="rule-form-header">
-                        <span>{editingId ? "Edit Rule" : "Add Rule"}</span>
-                        <button className="btn-icon-sm" onClick={closeForm}>
-                            ✕
-                        </button>
-                    </div>
+                <div className="modal-overlay">
+                    <div className="modal-content" style={{ maxWidth: '400px' }}>
+                        <div className="rule-form-header">
+                            <span className="modal-title" style={{ margin: 0 }}>{editingId ? "Edit Rule" : "Add Rule"}</span>
+                            <button className="btn-icon-sm" onClick={closeForm}>
+                                ✕
+                            </button>
+                        </div>
 
-                    <div className="form-group">
-                        <label htmlFor="f-subject">Meeting Subject</label>
-                        <input
-                            id="f-subject"
-                            type="text"
-                            placeholder="e.g. Scrum Call"
-                            value={subject}
-                            onChange={(e) => setSubject(e.target.value)}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="f-project">Project Name</label>
-                        <input
-                            id="f-project"
-                            type="text"
-                            placeholder="e.g. Automation Test Folder"
-                            value={project}
-                            onChange={(e) => setProject(e.target.value)}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="f-task">Task ID</label>
-                        <input
-                            id="f-task"
-                            type="text"
-                            placeholder="e.g. PROJ-123"
-                            value={task}
-                            onChange={(e) => setTask(e.target.value)}
-                        />
-                    </div>
+                        <div style={{ marginTop: '16px' }}>
+                            <div className="form-group">
+                                <label htmlFor="f-subject">Meeting Subject</label>
+                                <input
+                                    id="f-subject"
+                                    type="text"
+                                    placeholder="e.g. Scrum Call"
+                                    value={subject}
+                                    onChange={(e) => setSubject(e.target.value)}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="f-project">Project Name</label>
+                                <input
+                                    id="f-project"
+                                    type="text"
+                                    placeholder="e.g. Automation Test Folder"
+                                    value={project}
+                                    onChange={(e) => setProject(e.target.value)}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="f-task">Task ID</label>
+                                <input
+                                    id="f-task"
+                                    type="text"
+                                    placeholder="e.g. PROJ-123"
+                                    value={task}
+                                    onChange={(e) => setTask(e.target.value)}
+                                />
+                            </div>
+                        </div>
 
-                    <div className="form-actions">
-                        <button className="btn btn-ghost" onClick={closeForm}>
-                            Cancel
-                        </button>
-                        <button className="btn btn-primary" disabled={loading} onClick={handleSave}>
-                            {loading ? <span className="btn-spinner" /> : "Save"}
-                        </button>
+                        <div className="modal-actions" style={{ marginTop: '24px' }}>
+                            <button className="btn btn-ghost" onClick={closeForm}>
+                                Cancel
+                            </button>
+                            <button className="btn btn-primary" disabled={loading} onClick={handleSave}>
+                                {loading ? <span className="btn-spinner" /> : "Save"}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Delete Confirmation Modal */}
+            {showDeleteConfirm && (
+                <div className="modal-overlay">
+                    <div className="modal-content">
+                        <div className="modal-title">Delete Rule?</div>
+                        <div className="modal-message">
+                            Are you sure you want to delete this mapping rule? This action cannot be undone.
+                        </div>
+                        <div className="modal-actions">
+                            <button className="btn btn-ghost" onClick={() => setShowDeleteConfirm(null)}>
+                                Cancel
+                            </button>
+                            <button className="btn btn-primary" style={{ background: 'var(--error)' }} onClick={handleDelete}>
+                                Delete
+                            </button>
+                        </div>
                     </div>
                 </div>
             )}
