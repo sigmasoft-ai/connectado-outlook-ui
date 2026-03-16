@@ -5,7 +5,7 @@
   <ProviderName>Conectado</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Conectado"/>
-  <Description DefaultValue="A template to get started."/>
+  <Description DefaultValue="Manage meeting mappings and process recordings directly from your inbox."/>
   <IconUrl DefaultValue="https://localhost:3000/assets/logo.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/logo.png"/>
   <SupportUrl DefaultValue="https://www.Conectado.com/help"/>
@@ -156,7 +156,7 @@
           <bt:String id="ActionButton.Label" DefaultValue="Perform an action"/>
         </bt:ShortStrings>
         <bt:LongStrings>
-          <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Opens a pane that enables users to insert text."/>
+          <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Opens the Conectado process mapping pane."/>
           <bt:String id="ActionButton.Tooltip" DefaultValue="Perform an action when clicked."/>
         </bt:LongStrings>
       </Resources>

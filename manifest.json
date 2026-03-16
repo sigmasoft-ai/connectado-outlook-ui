@@ -8,8 +8,8 @@
     "full": "Conectado Task Pane Add-in"
   },
   "description": {
-    "short": "A template to get started.",
-    "full": "This is the template to get started."
+    "short": "Manage meeting mappings and recordings.",
+    "full": "Conectado helps you map meetings to projects and automatically process recordings from your inbox."
   },
   "developer": {
     "name": "Conectado",
