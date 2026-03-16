@@ -81,6 +81,7 @@ const FindRecordingsForm: React.FC<FindRecordingsFormProps> = ({ rules }) => {
                 sample_task: matched.sample_task,
             });
             showAlert("✓ Recording successfully queued for processing.", "success");
+            setRecordings(prev => prev.filter(r => r.download_url !== rec.download_url));
         } catch (e: unknown) {
             const msg = e instanceof Error ? e.message : String(e);
             showAlert(`Processing failed: ${msg}`);
