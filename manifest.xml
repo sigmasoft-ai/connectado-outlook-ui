@@ -2,9 +2,9 @@
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" xsi:type="MailApp">
   <Id>0aef13e2-1b0c-4174-bd87-5b578ae54cdb</Id>
   <Version>1.0.0.0</Version>
-  <ProviderName>Conectado</ProviderName>
+  <ProviderName>Aigent Connect</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="Conectado"/>
+  <DisplayName DefaultValue="Aigent Connect"/>
   <Description DefaultValue="Manage meeting mappings and process recordings directly from your inbox."/>
   <IconUrl DefaultValue="https://localhost:3000/assets/logo.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/logo.png"/>

@@ -129,37 +129,39 @@ const FindRecordingsForm: React.FC<FindRecordingsFormProps> = ({ rules }) => {
 
             {recordings.length > 0 && (
                 <div className="card" style={{ marginTop: "20px" }}>
-                    <h4 style={{ marginTop: 0, marginBottom: "10px", fontSize: "14px", color: "#323130" }}>Recordings Found</h4>
-                    {recordings.map((rec, i) => (
-                        <div key={i} className="mapping-preview" style={{ marginBottom: "10px" }}>
-                            <div className="preview-row">
-                                <span className="preview-label">Name</span>
-                                <span className="preview-value" style={{ wordBreak: "break-all" }}>{rec.name}</span>
+                    <h4 style={{ marginTop: 0, marginBottom: "0px", fontSize: "14px", color: "#323130" }}>Recordings Found</h4>
+                    <div className="recordings-list">
+                        {recordings.map((rec, i) => (
+                            <div key={i} className="mapping-preview" style={{ marginBottom: "0px" }}>
+                                <div className="preview-row">
+                                    <span className="preview-label">Name</span>
+                                    <span className="preview-value" style={{ wordBreak: "break-all" }}>{rec.name}</span>
+                                </div>
+                                <div className="preview-row">
+                                    <span className="preview-label">Subject</span>
+                                    <span className="preview-value">{rec.meeting_subject || "N/A"}</span>
+                                </div>
+                                <div className="preview-row">
+                                    <span className="preview-label">Time</span>
+                                    <span className="preview-value">{rec.meeting_start_time ? new Date(rec.meeting_start_time).toLocaleString() : "N/A"}</span>
+                                </div>
+                                {rec.download_url && (
+                                    <button
+                                        className="btn btn-primary"
+                                        style={{ marginTop: "10px", width: "100%" }}
+                                        disabled={downloadingUrl === rec.download_url}
+                                        onClick={() => handleSelectRecording(rec)}
+                                    >
+                                        {downloadingUrl === rec.download_url ? (
+                                            <span className="btn-spinner" />
+                                        ) : (
+                                            "Process Recording"
+                                        )}
+                                    </button>
+                                )}
                             </div>
-                            <div className="preview-row">
-                                <span className="preview-label">Subject</span>
-                                <span className="preview-value">{rec.meeting_subject || "N/A"}</span>
-                            </div>
-                            <div className="preview-row">
-                                <span className="preview-label">Time</span>
-                                <span className="preview-value">{rec.meeting_start_time ? new Date(rec.meeting_start_time).toLocaleString() : "N/A"}</span>
-                            </div>
-                            {rec.download_url && (
-                                <button
-                                    className="btn btn-primary"
-                                    style={{ marginTop: "10px", width: "100%" }}
-                                    disabled={downloadingUrl === rec.download_url}
-                                    onClick={() => handleSelectRecording(rec)}
-                                >
-                                    {downloadingUrl === rec.download_url ? (
-                                        <span className="btn-spinner" />
-                                    ) : (
-                                        "Process Recording"
-                                    )}
-                                </button>
-                            )}
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             )}
         </div>
