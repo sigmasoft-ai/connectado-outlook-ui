@@ -144,7 +144,7 @@ const FindRecordingsForm: React.FC<FindRecordingsFormProps> = ({ rules }) => {
                                 </div>
                                 <div className="preview-row">
                                     <span className="preview-label">Time</span>
-                                    <span className="preview-value">{rec.meeting_start_time ? new Date(rec.meeting_start_time).toLocaleString() : "N/A"}</span>
+                                    <span className="preview-value">{rec.recorded_at ? new Date(rec.recorded_at).toLocaleString() : "N/A"}</span>
                                 </div>
                                 {rec.download_url && (
                                     <button

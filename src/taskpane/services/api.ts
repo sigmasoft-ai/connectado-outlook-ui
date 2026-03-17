@@ -54,6 +54,7 @@ export interface RecordingItem {
     download_url?: string;
     meeting_subject?: string;
     meeting_start_time?: string;
+    recorded_at?: string;
 }
 
 export interface FindRecordingResponse {
