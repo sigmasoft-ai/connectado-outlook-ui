@@ -22,10 +22,24 @@ export function loadConfig(): void {
 }
 
 /**
+ * Normalizes a URL by removing trailing slashes.
+ * @param url The URL to normalize
+ * @returns The normalized URL without trailing slashes
+ */
+function normalizeUrl(url: string): string {
+    return url.replace(/\/+$/, "");
+}
+
+/**
  * Saves the configuration to Office roaming settings and updates the in-memory CONFIG.
  * @param newConfig The new configuration values.
  */
 export function saveConfig(newConfig: Partial<typeof CONFIG>): Promise<void> {
+    // Normalize the BASE_URL if provided
+    if (newConfig.CONECTADO_BASE_URL) {
+        newConfig.CONECTADO_BASE_URL = normalizeUrl(newConfig.CONECTADO_BASE_URL);
+    }
+    
     CONFIG = { ...CONFIG, ...newConfig };
 
     return new Promise((resolve, reject) => {
