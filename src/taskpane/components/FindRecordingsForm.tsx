@@ -63,7 +63,7 @@ const FindRecordingsForm: React.FC<FindRecordingsFormProps> = ({ rules }) => {
 
         if (!matched) {
             showAlert(
-                "No mapping found for this meeting subject. Please add one in the Mapping Editor tab first.",
+                "No mapping found for this meeting subject. Please add one in the Rule Editor tab first.",
                 "warning"
             );
             return;

@@ -124,7 +124,7 @@ const ActivateMeetingForm: React.FC<ActivateMeetingFormProps> = ({ rules }) => {
                         </>
                     ) : subject.trim() ? (
                         <div className="alert alert-warning">
-                            No matching rules found. Add one in the Mapping Editor.
+                            No matching rules found. Add one in the Rule Editor.
                         </div>
                     ) : (
                         <div style={{ fontSize: "12px", opacity: 0.7, textAlign: "center", padding: "10px" }}>

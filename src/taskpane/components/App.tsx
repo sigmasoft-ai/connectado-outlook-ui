@@ -106,15 +106,15 @@ const App: React.FC = () => {
       <>
         <div style={{ padding: "12px 1px", display: "flex", justifyContent: "right" }}>
           <div className="header-right">
-             <button
-            className="btn-icon-sm"
-            title="Configuration Settings"
-            onClick={() => setShowDeleteModal(true)}
-          >
-            🗑️
-          </button>
+            <button
+              className="btn-icon-sm"
+              title="Configuration Settings"
+              onClick={() => setShowDeleteModal(true)}
+            >
+              🗑️
+            </button>
           </div>
-         
+
         </div>
         <div className="app-root auth-gate">
           <div className="auth-container">
@@ -171,7 +171,7 @@ const App: React.FC = () => {
           className={`tab${activeTab === "mapping" ? " active" : ""}`}
           onClick={() => setActiveTab("mapping")}
         >
-          Mapping Editor
+          Rule Editor
         </button>
       </nav>
 
