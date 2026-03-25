@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  connectado-outlook:
+    image: connectado-outlook-ui:prod
+    ports:
+      - "8095:80"
+      - "8096:443"
+    volumes:
+      - /etc/ssl/certs/sigmasoftinfotech_fullchain.crt:/etc/ssl/certs/sigmasoftinfotech_fullchain.crt:ro
+      - /etc/ssl/private/sigmasoftinfotech.key:/etc/ssl/private/sigmasoftinfotech.key:ro
+    deploy:
+      replicas: 5
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 256M

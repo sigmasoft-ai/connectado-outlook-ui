@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  connectado-outlook:
+    build: .
+    ports:
+      - "8095:80"
+      - "8096:443"
+    volumes:
+      - /etc/ssl/certs/sigmasoftinfotech_fullchain.crt:/etc/ssl/certs/sigmasoftinfotech_fullchain.crt:ro
+      - /etc/ssl/private/sigmasoftinfotech.key:/etc/ssl/private/sigmasoftinfotech.key:ro
+    restart: unless-stopped
+    container_name: connectado-outlook-ui
