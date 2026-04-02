@@ -14,7 +14,7 @@
   "developer": {
     "name": "Conectado",
     "websiteUrl": "https://www.Conectado.com",
-    "privacyUrl": "https://www.Conectado.com/privacy",
+    "privacyUrl": "https://www.sigmasoft.ai/privacy-policy#Contact-Us",
     "termsOfUseUrl": "https://www.Conectado.com/servicesagreement"
   },
   "icons": {
@@ -65,7 +65,7 @@
           "id": "TaskPaneRuntime",
           "type": "general",
           "code": {
-            "page": "https://localhost:3000/taskpane.html"
+            "page": "https://prod.sigmasoftinfotech.com/connectado_outlook/taskpane.html"
           },
           "lifetime": "short",
           "actions": [
@@ -81,8 +81,8 @@
           "id": "CommandsRuntime",
           "type": "general",
           "code": {
-            "page": "https://localhost:3000/commands.html",
-            "script": "https://localhost:3000/commands.js"
+            "page": "https://prod.sigmasoftinfotech.com/connectado_outlook/commands.html",
+            "script": "https://prod.sigmasoftinfotech.com/connectado_outlook/commands.js"
           },
           "lifetime": "short",
           "actions": [
@@ -108,15 +108,15 @@
                   "icons": [
                     {
                       "size": 16,
-                      "url": "https://localhost:3000/assets/logo.png"
+                      "url": "https://prod.sigmasoftinfotech.com/connectado_outlook/assets/icon-16.png"
                     },
                     {
                       "size": 32,
-                      "url": "https://localhost:3000/assets/logo.png"
+                      "url": "https://prod.sigmasoftinfotech.com/connectado_outlook/assets/icon-32.png"
                     },
                     {
                       "size": 80,
-                      "url": "https://localhost:3000/assets/logo.png"
+                      "url": "https://prod.sigmasoftinfotech.com/connectado_outlook/assets/icon-80.png"
                     }
                   ],
                   "controls": [
@@ -127,15 +127,15 @@
                       "icons": [
                         {
                           "size": 16,
-                          "url": "https://localhost:3000/assets/logo.png"
+                          "url": "https://prod.sigmasoftinfotech.com/connectado_outlook/assets/icon-16.png"
                         },
                         {
                           "size": 32,
-                          "url": "https://localhost:3000/assets/logo.png"
+                          "url": "https://prod.sigmasoftinfotech.com/connectado_outlook/assets/icon-32.png"
                         },
                         {
                           "size": 80,
-                          "url": "https://localhost:3000/assets/logo.png"
+                          "url": "https://prod.sigmasoftinfotech.com/connectado_outlook/assets/icon-80.png"
                         }
                       ],
                       "supertip": {
@@ -151,15 +151,15 @@
                       "icons": [
                         {
                           "size": 16,
-                          "url": "https://localhost:3000/assets/logo.png"
+                          "url": "https://prod.sigmasoftinfotech.com/connectado_outlook/assets/icon-16.png"
                         },
                         {
                           "size": 32,
-                          "url": "https://localhost:3000/assets/logo.png"
+                          "url": "https://prod.sigmasoftinfotech.com/connectado_outlook/assets/icon-32.png"
                         },
                         {
                           "size": 80,
-                          "url": "https://localhost:3000/assets/icon-80.png"
+                          "url": "https://prod.sigmasoftinfotech.com/connectado_outlook/assets/icon-80.png"
                         }
                       ],
                       "supertip": {
