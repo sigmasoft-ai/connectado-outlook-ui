@@ -8,7 +8,7 @@ interface ConfigurationFormProps {
 }
 
 const ConfigurationForm: React.FC<ConfigurationFormProps> = ({ onConfigSaved }) => {
-    const [baseUrl, setBaseUrl] = useState(CONFIG.CONECTADO_BASE_URL);
+    const [baseUrl, setBaseUrl] = useState(CONFIG.AIGENT_CONNECT_BASE_URL);
     const [clientId, setClientId] = useState(CONFIG.MSAL_CLIENT_ID);
     const [tenantId, setTenantId] = useState(CONFIG.MSAL_TENANT_ID);
     const [loading, setLoading] = useState(false);
@@ -25,7 +25,7 @@ const ConfigurationForm: React.FC<ConfigurationFormProps> = ({ onConfigSaved }) 
             }
 
             await saveConfig({
-                CONECTADO_BASE_URL: baseUrl,
+                AIGENT_CONNECT_BASE_URL: baseUrl,
                 MSAL_CLIENT_ID: clientId,
                 MSAL_TENANT_ID: tenantId,
             });
@@ -42,7 +42,7 @@ const ConfigurationForm: React.FC<ConfigurationFormProps> = ({ onConfigSaved }) 
         <div className="app-root auth-gate">
             <div className="auth-container" style={{ maxWidth: "360px" }}>
                 <div className="auth-logo">
-                    <img src={logo} alt="Conectado" style={{ width: "64px", marginBottom: "8px" }} />
+                    <img src={logo} alt="Aigent Connect" style={{ width: "64px", marginBottom: "8px" }} />
                     <h1 className="auth-title">Settings</h1>
                 </div>
 

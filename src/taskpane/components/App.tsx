@@ -119,7 +119,7 @@ const App: React.FC = () => {
         <div className="app-root auth-gate">
           <div className="auth-container">
             <div className="auth-logo">
-              <img style={{ width: "150px" }} src={logo} alt="Conectado" />
+              <img style={{ width: "150px" }} src={logo} alt="Aigent Connect" />
             </div>
 
             <p className="auth-subtitle">Sign in to manage your meeting mappings and activate recordings.</p>
@@ -145,9 +145,6 @@ const App: React.FC = () => {
     <div className="app-root">
       {/* ── Header ── */}
       <header className="app-header">
-        {/* <div className="header-left">
-          <img src={logo} alt="Conectado" style={{ height: "24px" }} />
-        </div> */}
         <div className="header-right">
           <button
             className="btn-icon-sm"

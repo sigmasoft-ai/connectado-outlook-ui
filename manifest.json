@@ -4,18 +4,18 @@
   "manifestVersion": "1.17",
   "version": "1.0.0",
   "name": {
-    "short": "Conectado Task Pane Add-in",
-    "full": "Conectado Task Pane Add-in"
+    "short": "Aigent Connect",
+    "full": "Aigent Connect Task Pane Add-in"
   },
   "description": {
     "short": "Manage meeting mappings and recordings.",
-    "full": "Conectado helps you map meetings to projects and automatically process recordings from your inbox."
+    "full": "Aigent Connect helps you map meetings to projects and automatically process recordings from your inbox."
   },
   "developer": {
-    "name": "Conectado",
-    "websiteUrl": "https://www.Conectado.com",
+    "name": "Sigmasoft",
+    "websiteUrl": "https://www.sigmasoft.ai",
     "privacyUrl": "https://www.sigmasoft.ai/privacy-policy",
-    "termsOfUseUrl": "https://www.Conectado.com/servicesagreement"
+    "termsOfUseUrl": "https://www.sigmasoft.ai"
   },
   "icons": {
     "outline": "assets/outline.png",
@@ -37,7 +37,7 @@
     }
   },
   "validDomains": [
-    "Conectado.com"
+    "www.sigmasoft.ai"
   ],
   "extensions": [
     {
@@ -104,7 +104,7 @@
               "groups": [
                 {
                   "id": "msgComposeGroup",
-                  "label": "Conectado Add-in",
+                  "label": "Aigent Connect Add-in",
                   "icons": [
                     {
                       "size": 16,

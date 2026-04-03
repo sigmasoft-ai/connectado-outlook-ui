@@ -10,7 +10,7 @@ export async function validateMapping(
     projectName: string,
     sampleTask: string
 ): Promise<ValidateMappingResult> {
-    const resp = await fetch(`${CONFIG.CONECTADO_BASE_URL}/api/v1/validate_mapping`, {
+    const resp = await fetch(`${CONFIG.AIGENT_CONNECT_BASE_URL}/v1/validate_mapping`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ project_name: projectName, sample_task: sampleTask }),
@@ -34,7 +34,7 @@ export async function activateMeeting(params: ActivateMeetingParams): Promise<vo
     form.append("meeting_project", params.meetingProject);
     form.append("sample_task", params.sampleTask);
 
-    const resp = await fetch(`${CONFIG.CONECTADO_BASE_URL}/api/v1/activate_meeting`, {
+    const resp = await fetch(`${CONFIG.AIGENT_CONNECT_BASE_URL}/v1/activate_meeting`, {
         method: "POST",
         body: form,
     });
@@ -64,7 +64,7 @@ export interface FindRecordingResponse {
 }
 
 export async function getRecordings(subject: string, date: string): Promise<RecordingItem[]> {
-    const url = `${CONFIG.CONECTADO_BASE_URL}/api/v1/recordings?subject=${encodeURIComponent(subject)}&date=${encodeURIComponent(date)}`;
+    const url = `${CONFIG.AIGENT_CONNECT_BASE_URL}/v1/recordings?subject=${encodeURIComponent(subject)}&date=${encodeURIComponent(date)}`;
     const resp = await fetch(url, {
         method: "GET",
     });
@@ -89,7 +89,7 @@ export interface ActivateFromPluginParams {
 }
 
 export async function activateFromPlugin(params: ActivateFromPluginParams): Promise<void> {
-    const resp = await fetch(`${CONFIG.CONECTADO_BASE_URL}/api/v1/recordings/activate_from_plugin`, {
+    const resp = await fetch(`${CONFIG.AIGENT_CONNECT_BASE_URL}/v1/recordings/activate_from_plugin`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(params),

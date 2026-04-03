@@ -5,8 +5,8 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 
-const urlDev = "https://localhost:3000/";
-const urlProd = "https://www.Conectado.com/"; // CHANGE THIS TO YOUR PRODUCTION DEPLOYMENT LOCATION
+const urlDev = "https://prod.sigmasoftinfotech.com/connectado_outlook/";
+const urlProd = "https://prod.sigmasoftinfotech.com/connectado_outlook/"; // CHANGE THIS TO YOUR PRODUCTION DEPLOYMENT LOCATION
 
 async function getHttpsOptions() {
   const httpsOptions = await devCerts.getHttpsServerOptions();

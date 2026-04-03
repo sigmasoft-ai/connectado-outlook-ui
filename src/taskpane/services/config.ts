@@ -3,7 +3,7 @@
 // These are persisted using Office.context.roamingSettings.
 
 export let CONFIG = {
-    CONECTADO_BASE_URL: "",
+    AIGENT_CONNECT_BASE_URL: "",
     MSAL_CLIENT_ID: "",
     MSAL_TENANT_ID: "",
     ONEDRIVE_FILE_PATH: "projects_mapping.json",
@@ -17,17 +17,24 @@ export function loadConfig(): void {
         const workspaceConfig = Office.context.roamingSettings.get("workspaceConfig");
         if (workspaceConfig) {
             CONFIG = { ...CONFIG, ...workspaceConfig };
+            if (CONFIG.AIGENT_CONNECT_BASE_URL) {
+                CONFIG.AIGENT_CONNECT_BASE_URL = normalizeUrl(CONFIG.AIGENT_CONNECT_BASE_URL);
+            }
         }
     }
 }
 
 /**
- * Normalizes a URL by removing trailing slashes.
+ * Normalizes a URL by removing trailing slashes and appending /api if missing.
  * @param url The URL to normalize
- * @returns The normalized URL without trailing slashes
+ * @returns The normalized URL with /api
  */
 function normalizeUrl(url: string): string {
-    return url.replace(/\/+$/, "");
+    let normalized = url.replace(/\/+$/, "");
+    if (!normalized.endsWith("/api")) {
+        normalized += "/api";
+    }
+    return normalized;
 }
 
 /**
@@ -36,10 +43,10 @@ function normalizeUrl(url: string): string {
  */
 export function saveConfig(newConfig: Partial<typeof CONFIG>): Promise<void> {
     // Normalize the BASE_URL if provided
-    if (newConfig.CONECTADO_BASE_URL) {
-        newConfig.CONECTADO_BASE_URL = normalizeUrl(newConfig.CONECTADO_BASE_URL);
+    if (newConfig.AIGENT_CONNECT_BASE_URL) {
+        newConfig.AIGENT_CONNECT_BASE_URL = normalizeUrl(newConfig.AIGENT_CONNECT_BASE_URL);
     }
-    
+
     CONFIG = { ...CONFIG, ...newConfig };
 
     return new Promise((resolve, reject) => {
@@ -63,7 +70,7 @@ export function saveConfig(newConfig: Partial<typeof CONFIG>): Promise<void> {
  */
 export function isConfigured(): boolean {
     return !!(
-        CONFIG.CONECTADO_BASE_URL &&
+        CONFIG.AIGENT_CONNECT_BASE_URL &&
         CONFIG.MSAL_CLIENT_ID &&
         CONFIG.MSAL_TENANT_ID
     );
@@ -73,7 +80,7 @@ export function isConfigured(): boolean {
  * Clears the configuration from roaming settings.
  */
 export function clearConfig(): Promise<void> {
-    CONFIG.CONECTADO_BASE_URL = "";
+    CONFIG.AIGENT_CONNECT_BASE_URL = "";
     CONFIG.MSAL_CLIENT_ID = "";
     CONFIG.MSAL_TENANT_ID = "";
 

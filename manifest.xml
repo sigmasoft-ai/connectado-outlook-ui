@@ -6,11 +6,11 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Aigent Connect"/>
   <Description DefaultValue="Manage meeting rules and process recordings directly from your inbox."/>
-  <IconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
-  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-128.png"/>
-  <SupportUrl DefaultValue="https://www.Conectado.com/help"/>
+  <IconUrl DefaultValue="https://prod.sigmasoftinfotech.com/connectado_outlook/assets/icon-64.png"/>
+  <HighResolutionIconUrl DefaultValue="https://prod.sigmasoftinfotech.com/connectado_outlook/assets/icon-128.png"/>
+  <SupportUrl DefaultValue="https://www.sigmasoft.ai/privacy-policy#Contact-Us"/>
   <AppDomains>
-    <AppDomain>https://sigmasoftinfotech.com/</AppDomain>
+    <AppDomain>https://www.sigmasoft.ai</AppDomain>
   </AppDomains>
   <Hosts>
     <Host Name="Mailbox"/>
@@ -23,7 +23,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://localhost:3000/taskpane.html"/>
+        <SourceLocation DefaultValue="https://prod.sigmasoftinfotech.com/connectado_outlook/taskpane.html"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -142,21 +142,21 @@
       </Hosts>
       <Resources>
         <bt:Images>
-          <bt:Image id="Icon.16x16" DefaultValue="https://localhost:3000/assets/icon-16.png"/>
-          <bt:Image id="Icon.32x32" DefaultValue="https://localhost:3000/assets/icon-32.png"/>
-          <bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
+          <bt:Image id="Icon.16x16" DefaultValue="https://prod.sigmasoftinfotech.com/connectado_outlook/assets/icon-16.png"/>
+          <bt:Image id="Icon.32x32" DefaultValue="https://prod.sigmasoftinfotech.com/connectado_outlook/assets/icon-32.png"/>
+          <bt:Image id="Icon.80x80" DefaultValue="https://prod.sigmasoftinfotech.com/connectado_outlook/assets/icon-80.png"/>
         </bt:Images>
         <bt:Urls>
-          <bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/commands.html"/>
-          <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/taskpane.html"/>
+          <bt:Url id="Commands.Url" DefaultValue="https://prod.sigmasoftinfotech.com/connectado_outlook/commands.html"/>
+          <bt:Url id="Taskpane.Url" DefaultValue="https://prod.sigmasoftinfotech.com/connectado_outlook/taskpane.html"/>
         </bt:Urls>
         <bt:ShortStrings>
-          <bt:String id="GroupLabel" DefaultValue="Conectado Add-in"/>
+          <bt:String id="GroupLabel" DefaultValue="Aigent Connect Add-in"/>
           <bt:String id="TaskpaneButton.Label" DefaultValue="Show Task Pane"/>
           <bt:String id="ActionButton.Label" DefaultValue="Perform an action"/>
         </bt:ShortStrings>
         <bt:LongStrings>
-          <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Opens the Conectado rule editor pane."/>
+          <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Opens the Aigent Connect rule editor pane."/>
           <bt:String id="ActionButton.Tooltip" DefaultValue="Perform an action when clicked."/>
         </bt:LongStrings>
       </Resources>
